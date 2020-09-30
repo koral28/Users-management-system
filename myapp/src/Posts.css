@@ -1,0 +1,52 @@
+.posts {
+  border: 1px solid black;
+  height: 200px;
+  margin-left: 500px;
+  margin-right: 450px;
+  width: 500px;
+  margin-top: 90px;
+  overflow: hidden;
+  margin-bottom: 180px;
+}
+
+.postsTitle {
+  margin-left: 500px;
+  margin-top: 10px;
+}
+.postElement {
+  border: 1px solid lightskyblue;
+  width: 420px;
+  height: 80px;
+  margin: 20px;
+  overflow-y: scroll;
+}
+
+.postsTitle {
+  margin-left: 1px;
+  margin-top: 1px;
+}
+
+.postsAndBtnPost {
+  height: 30px;
+  width: 500px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 350px;
+}
+
+.addBtnPost {
+  float: right;
+  margin-top: -18px;
+}
+
+.visiblePost {
+  visibility: visible;
+}
+
+.invisiblePost {
+  visibility: hidden;
+}
+
+.addPosts {
+  height: 10px !important;
+}

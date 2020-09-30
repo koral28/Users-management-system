@@ -1,0 +1,70 @@
+.todos {
+  border: 1px solid black;
+  height: 250px;
+  margin-left: 500px;
+  margin-right: 450px;
+  width: 500px;
+  margin-top: 90px;
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.todosTitle {
+  float: left;
+}
+
+.todoElement {
+  border: 1px solid lightskyblue;
+  width: 420px;
+  height: 90px;
+  margin: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  overflow-y: scroll;
+}
+
+.completedBtn {
+  background-color: lightseagreen !important;
+  width: 25% !important;
+  height: 22px !important;
+  border: 1px solid lightskyblue !important;
+  float: right;
+  margin-top: -15px;
+}
+
+.showMarkCompleted {
+  visibility: visible;
+  float: right;
+}
+
+.hideMarkCompleted {
+  visibility: hidden;
+}
+
+.addBtnToDo {
+  float: right;
+  margin-top: 18px;
+}
+
+.todosAndBtnTodo {
+  height: 40px;
+  width: 500px;
+  float: right;
+  margin-top: 150px;
+  margin-right: 350px;
+}
+
+.visibleTodo {
+  visibility: visible;
+}
+
+.invisibleTodo {
+  visibility: hidden;
+}
+
+.addTodos {
+  height: 20px;
+}

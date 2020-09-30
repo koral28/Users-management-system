@@ -1,0 +1,80 @@
+.User1 {
+  border: 1px solid red;
+  padding: 10px;
+  height: 150px;
+  width: 90%;
+  margin: -20px 10px 100px 15px;
+  text-align: left;
+  float: left;
+}
+.User2 {
+  border: 1px solid red;
+  padding: 10px;
+  height: 400px;
+  width: 90%;
+  margin: -90px 10px 100px 15px;
+  text-align: left;
+  float: left;
+}
+
+.User3 {
+  border: 1px solid green;
+  padding: 10px;
+  height: 400px;
+  width: 90%;
+  margin: -90px 10px 100px 15px;
+  text-align: left;
+  float: left;
+}
+
+.userInputAndBtns {
+  margin-top: -100px;
+}
+
+input[type="text"] {
+  width: 45% !important;
+}
+
+.id {
+  border: none;
+  border-color: transparent;
+  margin-top: 5px;
+}
+
+.otherData {
+  background-color: lightseagreen !important;
+  width: 25% !important;
+  height: 22px !important;
+  border: 1px solid lightskyblue !important;
+  float: left;
+  margin-top: 60px;
+}
+
+input[type="button"] {
+  margin-bottom: 100px;
+  background-color: lightpink;
+  border: 1px solid lightgreen;
+}
+
+.updateDelete {
+  text-align: center;
+  margin-top: -244px;
+  float: right;
+}
+
+.visibleStyle {
+  visibility: visible;
+}
+
+.hiddenStyle {
+  visibility: hidden;
+}
+
+.coloredUserDiv {
+  background-color: lightgray !important;
+  height: 150px;
+}
+
+.noColorUserDiv {
+  background-color: none !important;
+}
