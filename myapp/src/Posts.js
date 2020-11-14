@@ -46,6 +46,8 @@ class Posts extends Component {
     let posts = this.props.postsArr.map((post) => {
       return (
         <ul className="postElement" key={post.id}>
+          <li key={post.userId}>UserId: {post.userId}</li>
+          <br />
           <li key={post.body}>Title: {post.title}</li>
           <br />
           <li key={post.title}>Body: {post.body} </li>
@@ -70,7 +72,9 @@ class Posts extends Component {
         <div className="posts">
           <div className="addPosts">
             <div className={this.state.addTodoVisibleStyle}>
-              <AddPost posts={this.props.postsArr} />
+              <div className={invisible}>
+                <AddPost posts={this.props.postsArr} />
+              </div>
             </div>
           </div>
 

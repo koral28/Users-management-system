@@ -60,7 +60,9 @@ class User extends Component {
   };
 
   render() {
+    /*eslint-disable eqeqeq*/
     let backgroundUserChangeIdPress;
+
     if (this.state.backgroundIdChange) {
       backgroundUserChangeIdPress = "coloredUserDiv";
     } else {
@@ -78,19 +80,11 @@ class User extends Component {
       userOtherContentFit = "User2";
     } else {
       userOtherContentFit = "User1";
+      if (this.props.finish == true && this.props.idFinish == this.props.id) {
+        userOtherContentFit = "User3";
+      }
     }
 
-    /*eslint eqeqeq: "off"*/
-    // if (this.props.finish == 5) {
-    //   console.log(this.props.finish);
-    //     userOtherContentFit = "User3";
-    // }
-
-    //2 CLASSES
-    // const styles = {
-    //   B1: "visibleStyle",
-    //   B2: "id",
-    // };
     return (
       <div className={userOtherContentFit}>
         <div className={backgroundUserChangeIdPress}>

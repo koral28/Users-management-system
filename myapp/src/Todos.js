@@ -4,7 +4,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import AddTodo from "./AddTodo";
 
 class Todos extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       todoId: "",
@@ -19,22 +19,39 @@ class Todos extends Component {
     this.setState({
       todoId: id,
     });
+    this.userTodosFinished();
   };
 
   userTodosFinished() {
-    let flagFinish = true;
-    // let userTodosFinished;
+    /*eslint-disable eqeqeq*/
+    let numOfTodos = 0;
+    let numOfFinish = 0;
+    let numOfNotFinish = 0;
+
+    this.props.todosArr.map((todo) => {
+      if (this.props.userId == todo.userId) {
+        numOfTodos++;
+      }
+    });
+
     this.props.todosArr.map((todo) => {
       if (this.props.userId == todo.userId) {
         if (!todo.completed) {
-          flagFinish = false;
+          numOfNotFinish++;
         }
       }
-      //   userTodosFinished = todo.userId;
     });
-    if (flagFinish) {
-      //   console.log("yes");
-      //   this.props.userTodosFinishedUpdateFather();
+
+    this.props.todosArr.map((todo) => {
+      if (this.props.userId == todo.userId) {
+        if (todo.completed) {
+          numOfFinish++;
+        }
+      }
+    });
+
+    if (numOfFinish + 1 == numOfTodos) {
+      this.props.userTodosFinishedUpdateFather(this.props.userId);
     }
   }
 
@@ -55,8 +72,13 @@ class Todos extends Component {
     let completed = "";
     let idIsClicked = this.props.todosPostsIsClicked;
 
+    let invisible;
+
+    if (!idIsClicked) {
+      invisible = "invisiblePost";
+    }
+
     let todos = this.props.todosArr.map((todo, index) => {
-      this.userTodosFinished();
       /*eslint eqeqeq: "off"*/
       if (todo.completed) {
         completed = "true";
@@ -77,6 +99,7 @@ class Todos extends Component {
       }
       return (
         <ul className="todoElement" key={todo.id}>
+          <li key={todo.title}>Todo Id: {todo.id}</li>
           <li key={todo.id}>Title: {todo.title}</li>
           <li key={todo.completed}>Completed: {completed} </li>
           <input
@@ -108,10 +131,12 @@ class Todos extends Component {
 
         <div className="todos">
           <div className={this.state.addTodoVisibleStyle}>
-            <AddTodo todos={this.props.todosArr} />
+            <div className={invisible}>
+              <AddTodo todos={this.props.todosArr} />
+            </div>
           </div>
           <div className={this.state.visibleStyled}>
-            <div className={visibleStyle}>
+            <div className={invisible}>
               <Scrollbars style={{ width: 500, height: 500 }}>
                 {todos}
               </Scrollbars>

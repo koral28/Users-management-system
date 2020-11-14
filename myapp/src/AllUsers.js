@@ -15,13 +15,16 @@ class AllUsers extends Component {
       users: [],
       posts: [],
       todos: [],
+      todosById: [],
+      postsById: [],
       searchWord: "",
       searchOn: false,
       isVisible: false,
       isVisibleAddUser: false,
       userIdOnFocus: "",
       todosPostsIsClicked: false,
-      userFinish: false,
+      userFinishId: "",
+      finish: false,
     };
   }
 
@@ -64,10 +67,25 @@ class AllUsers extends Component {
   };
 
   showHideTodosPosts = (id) => {
+    let userTodosById = [];
+    this.state.todos.map((todo) => {
+      if (id == todo.userId) {
+        userTodosById.push(todo);
+      }
+    });
+    let userPostsById = [];
+    this.state.posts.map((post) => {
+      if (id == post.userId) {
+        userPostsById.push(post);
+      }
+    });
     this.setState({
       isVisible: !this.state.isVisible,
       userIdOnFocus: id,
       todosPostsIsClicked: !this.state.todosPostsIsClicked,
+      finish: false,
+      todosById: userTodosById,
+      postsById: userPostsById,
     });
   };
 
@@ -77,8 +95,14 @@ class AllUsers extends Component {
     });
   };
 
+  update = (id) => {
+    this.setState({
+      userFinishId: id,
+      finish: !this.state.finish,
+    });
+  };
+
   render() {
-    let finish = 6;
     let visibleStyle;
     if (this.state.isVisible) {
       visibleStyle = "visibleStyle";
@@ -112,7 +136,8 @@ class AllUsers extends Component {
                 name={val.name}
                 email={val.email}
                 id={val.id}
-                finish={finish}
+                idFinish={this.state.userFinishId}
+                finish={this.state.finish}
                 updateParentData={(id, user) => this.saveData(id, user)}
                 deleteParentData={(id) => this.deleteData(id)}
                 showHideTodosPosts={() => this.finishedTodos()}
@@ -140,7 +165,8 @@ class AllUsers extends Component {
             name={val.name}
             email={val.email}
             id={val.id}
-            finish={finish}
+            idFinish={this.state.userFinishId}
+            finish={this.state.finish}
             updateParentData={(id, user) => this.saveData(id, user)}
             deleteParentData={(id) => this.deleteData(id)}
             showHideTodosPosts={(id) => this.showHideTodosPosts(id)}
@@ -160,14 +186,16 @@ class AllUsers extends Component {
           <Todos
             todosPostsIsClicked={this.state.todosPostsIsClicked}
             key={this.state.todos.title}
-            todosArr={this.state.todos}
+            todosArr={this.state.todosById}
             userId={this.state.userIdOnFocus}
-            // userTodosFinishedUpdateFather={() => (finish = 5)}
+            userTodosFinishedUpdateFather={(userTodosFinished) =>
+              this.update(userTodosFinished)
+            }
           />
           <Posts
             todosPostsIsClicked={this.state.todosPostsIsClicked}
             key={this.state.todos.userId}
-            postsArr={this.state.posts}
+            postsArr={this.state.postsById}
             userId={this.state.userIdOnFocus}
           />
         </div>
@@ -177,7 +205,7 @@ class AllUsers extends Component {
         </div>
 
         <div className="allUsers">
-          <Scrollbars style={{ width: 400, height: 600 }}>
+          <Scrollbars style={{ width: 400, height: 800 }}>
             <div className="searchAdd">
               Search
               <input
